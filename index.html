@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>N-Body</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    canvas {
+      background-image: url('./assets/starfield.jpg');
+      background-size: cover;
+    }
+
+    #controls {
+      display: flex;
+      gap: 20px;
+    }
+  </style>  
+</head>
+<body>
+  
+  <canvas width="500" height="500" id="canvas"></canvas>
+  <div id="controls">
+    <div>
+      <input type="range" id="timerange" name="timerange" value="25000" min="25000" max="25000000" step="25000">
+      <label for="timerange">Time: <span id="value">25,000</span></label>
+    </div>
+    <button onclick="startSim()">Start</button>
+  </div>
+  
+  
+  <script type="module">
+    import { step, config } from './nbody.js';
+    import { ContextWrapper } from './context-wrapper.js';
+    window.running = false;
+
+    window.startSim = () => {
+      if (!running) {
+        running = true;
+        let ctx = document.getElementById('canvas').getContext('2d');
+        let ctxWrapper = new ContextWrapper(ctx);
+
+        let t = 0;
+        let finalT = parseInt(document.getElementById('timerange').value);
+        let deltaT = 25000.0;
+
+        const runSimulation = () => {
+          if (t < finalT) {
+            setTimeout(() => {
+              requestAnimationFrame(() => {
+                t += deltaT;
+                step(ctxWrapper, deltaT);
+                runSimulation();
+              });
+            }, 1000/30);
+          } else {
+            console.log(config);
+          }
+        };
+
+        runSimulation();
+      }
+    }
+
+    const handleInput = () => {
+      let v = parseInt(document.getElementById('timerange').value);
+      document.getElementById('value').innerText = v.toLocaleString('en-US');
+    };
+
+    document.getElementById('timerange').addEventListener('input', handleInput);
+  </script>
+</body>
+</html>

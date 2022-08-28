@@ -28,7 +28,7 @@ $$F_y = \frac{F(y_2-y_1)}{r}$$
 
 If you remember from physics, the net force on a single body can be calculated by summing up the forces of a body with all other bodies in a system. For example, if we were calculating the forces on Earth, we would sum up:
 
-$$F_{Earth} = F_{Earth \rarr Sun}+F_{Earth \rarr Mercury} + F_{Earth \rarr Venus} + F_{Earth \rarr Mars}$$
+$$F_{Earth} = F_{Earth \rightarrow Sun}+F_{Earth \rightarrow Mercury} + F_{Earth \rightarrow Venus} + F_{Earth \rightarrow Mars}$$
 
 Now that we have the total forces on a body, we can use kinematic equations to update its state:
 

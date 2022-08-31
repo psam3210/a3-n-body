@@ -30,8 +30,8 @@
   <canvas width="500" height="500" id="canvas"></canvas>
   <div id="controls">
     <div>
-      <input type="range" id="timerange" name="timerange" value="25000" min="25000" max="25000000" step="25000">
-      <label for="timerange">Time: <span id="value">25,000</span></label>
+      <input type="range" id="timerange" name="timerange" value="1" min="1" max="1000" step="1">
+      <label for="timerange">Time steps: <span id="value">1</span></label>
     </div>
     <button onclick="startSim()">Start</button>
   </div>
@@ -49,8 +49,8 @@
         let ctxWrapper = new ContextWrapper(ctx);
 
         let t = 0;
-        let finalT = parseInt(document.getElementById('timerange').value);
         let deltaT = 25000.0;
+        let finalT = parseInt(document.getElementById('timerange').value) * deltaT;
 
         const runSimulation = () => {
           if (t < finalT) {

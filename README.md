@@ -14,7 +14,7 @@ You may choose to complete this assignment individually or with a partner.
 
 <br>
 
-> This is a computer science class first, a design clas second, and an orbital dynamics class third.
+> This is a computer science class first, a design class second, and an orbital dynamics class third.
 > 
 > — Michael Fehrenbach
 

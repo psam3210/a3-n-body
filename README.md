@@ -12,6 +12,14 @@ Our goal is to accurately model the rotation of the inner planets around the Sun
 
 You may choose to complete this assignment individually or with a partner.
 
+<br>
+
+> This is a computer science class first, a design clas second, and an orbital dynamics class third.
+> 
+> — Michael Fehrenbach
+
+<br>
+
 ## Approach
 In physics, the gravitational forces $F$ two bodies in space apply on each other can be defined using [Newton’s law of universal gravitation](https://en.wikipedia.org/wiki/Newton%27s_law_of_universal_gravitation). $$F={G m_1 m_2 \over r^2}$$ Here, $G$ is the Gravitational constant, defined by $6.67 \times 10^{-11} N \cdot m^2 \cdot kg^{-2}$, $m_1$ is the mass of the first body in kilograms, $m_2$ is the mass of the second body in kilograms, and $r$ is the distance between the two bodies in meters. The distance between the two bodies on an $(x,y)$ plane where body 1 is located at $(x_1, y_1)$ and body 2 is located at $(x_2, y_2)$ is defined as: $$r = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$$ Since our representation of the universe uses an $(x,y)$ coordinate system, we’ll need to break our forces down into an $x$ and $y$ component as well. To do that, we can derive that: $$F_x = \frac{F(x_2-x_1)}{r}$$ $$F_y = \frac{F(y_2-y_1)}{r}$$ If you remember from physics, the net force on a single body can be calculated by summing up the forces of a body with all other bodies in a system. For example, if we were calculating the forces on Earth, we would sum up: $$F_{Earth} = F_{Earth \rightarrow Sun}+F_{Earth \rightarrow Mercury} + F_{Earth \rightarrow Venus} + F_{Earth \rightarrow Mars}$$ Now that we have the total forces on a body, we can use kinematic equations to update its state: $$a_x = {F_x}{m}, a_y = {F_y}{m}$$ $$v_x = v_x + a_x\Delta t, v_y = v_y + a_y\Delta t$$ $$x = x + v_x\Delta t, y = y+ v_y \Delta t$$ Note that the introduction of $\Delta t$ is used to model the passage of time from one moment to the next. Since computers have to iterate over a discrete amount of data, we have to break time into a small fraction. Don’t worry, you’ll be provided a value for $\Delta t$ as an input to your function. Now that the positions of each body have updated, we rerun all the calcuations until the end of time, or until our computers run out of power.
 

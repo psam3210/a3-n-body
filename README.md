@@ -73,12 +73,12 @@ Every time step is called:
   - $f_y = f_y + F \cdot \Delta y \div r$
   - At the end of this, you should have `fx` and `fy` arrays where `fx[i]` represents the net force on the body at `config.bodies[i]`.
 - In a second loop, you'll update the position of the body
-  - $a_x = {f_x}{m}$
-  - $a_y = {f_y}{m}$
-  - $v_x = a_x \cdot \Delta t$
-  - $v_y = a_y \cdot \Delta t$
-  - $x = v_x \cdot \Delta t$
-  - $y = v_y \cdot \Delta t$
+  - $a_x = {f_x}/{m}$
+  - $a_y = {f_y}/{m}$
+  - $v_x = v_x + a_x \cdot \Delta t$
+  - $v_y = v_y + a_y \cdot \Delta t$
+  - $x = x + v_x \cdot \Delta t$
+  - $y = y + v_y \cdot \Delta t$
 - Clear the canvas
 - In a third loop, you'll redraw the bodies at their new position
 
